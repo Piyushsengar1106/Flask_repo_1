@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, render_template, request, redirect, session, url_for
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
-from model.users import Users
+from model.users import Users,Posts
 from model.users import db
 
 from form import RegisterForm
@@ -113,7 +113,7 @@ def fetch_all():
         print("list of users#################:", user.username)
     return render_template("fetch_all_users.html", users=users)
 
-@app.route("/fetch_all_posts")
+@app.route("/")
 @login_required
 def fetch_all_posts():
     posts = Posts.query.all()
