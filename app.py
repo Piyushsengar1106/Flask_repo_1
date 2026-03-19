@@ -113,6 +113,12 @@ def fetch_all():
         print("list of users#################:", user.username)
     return render_template("fetch_all_users.html", users=users)
 
+@app.route("/fetch_all_posts")
+@login_required
+def fetch_all_posts():
+    posts = Posts.query.all()
+    return render_template("fetch_all_posts.html", posts=posts)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
